@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlateElementNamespace;
 
 public class ElementsPanelShowerController : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class ElementsPanelShowerController : MonoBehaviour
 	private void Start()
 	{
 		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
-		List<PlateElement> allPlatesList = elementsPanelModel.GetListOfPlateElements();
+		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfPlateElements();
 
-		foreach(PlateElement eachElementData in allPlatesList)
+		foreach(PlateElementData eachElementData in allPlatesList)
 		{
 			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);

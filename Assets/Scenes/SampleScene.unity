@@ -498,10 +498,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platesList:
-  - nameOfPlate: Car
-    numberOfPlate: 127
-  - nameOfPlate: Machine
-    numberOfPlate: 12
+  - nameOfPlate: Bee
+    numberOfPlate: 10
+  - nameOfPlate: Meat
+    numberOfPlate: 5
 --- !u!114 &806719821
 MonoBehaviour:
   m_ObjectHideFlags: 0

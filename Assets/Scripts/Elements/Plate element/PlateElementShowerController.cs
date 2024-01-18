@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlateElementNamespace;
 using TMPro;
 
 public class PlateElementShowerController : MonoBehaviour
@@ -14,13 +15,13 @@ public class PlateElementShowerController : MonoBehaviour
 	{
 		plateElementModel = GetComponent<PlateElementShowerModel>();
 
-		PlateElement plateElementData = plateElementModel.GetPlateElementData();
+		PlateElementData plateElementData = plateElementModel.GetPlateElementData();
 		ShowPlateOnUI(plateElementData);
 	}
 
-	private void ShowPlateOnUI(PlateElement plateElementData)
+	private void ShowPlateOnUI(PlateElementData plateElementData)
 	{
-		plateName.text = plateElementData.nameOfPlate;
-		plateNumber.text = plateElementData.numberOfPlate.ToString();
+		plateName.text = plateElementData.GetNameOfPlate();
+		plateNumber.text = plateElementData.GetNumberOfPlate().ToString();
 	}
 }

@@ -1,20 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlateElementNamespace;
 
 public class ElementsPanelShowerModel : MonoBehaviour
 {
-    [SerializeField] private List<PlateElement> platesList = new List<PlateElement>();
+    [SerializeField] private List<PlateElementData> platesList = new List<PlateElementData>();
 
-    public List<PlateElement> GetListOfPlateElements()
+    public List<PlateElementData> GetListOfPlateElements()
 	{
 		return platesList;
 	}
-}
-
-[System.Serializable]
-public struct PlateElement
-{
-	public string nameOfPlate;
-	public int numberOfPlate;
 }

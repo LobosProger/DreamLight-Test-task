@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlateElementNamespace;
 
 public class PlateElementShowerModel : MonoBehaviour
 {
-    private PlateElement plateElement;
+    private PlateElementData plateElement;
 
-    public void SetPlateElementData(PlateElement plateElement)
+    public void SetPlateElementData(PlateElementData plateElement)
     {
         this.plateElement = plateElement;
     }
 
-	public PlateElement GetPlateElementData()
+	public PlateElementData GetPlateElementData()
 	{
         return plateElement;
 	}
