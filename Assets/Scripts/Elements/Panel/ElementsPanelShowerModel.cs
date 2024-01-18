@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementsPanelModel : MonoBehaviour
+public class ElementsPanelShowerModel : MonoBehaviour
 {
     [SerializeField] private List<PlateElement> platesList = new List<PlateElement>();
 

@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementsPanelController : MonoBehaviour
+public class ElementsPanelShowerController : MonoBehaviour
 {
-    [SerializeField] private PlateElementModel prefabOfPlate;
+    [SerializeField] private PlateElementShowerModel prefabOfPlate;
     [SerializeField] private Transform panelOfPlates;
 
-	private ElementsPanelModel elementsPanelModel;
+	private ElementsPanelShowerModel elementsPanelModel;
 
 	private void Start()
 	{
-		elementsPanelModel = GetComponent<ElementsPanelModel>();
+		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
 		List<PlateElement> allPlatesList = elementsPanelModel.GetListOfPlateElements();
 
 		foreach(PlateElement eachElementData in allPlatesList)
 		{
-			PlateElementModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
+			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
 	}
