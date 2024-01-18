@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlateElementsController : MonoBehaviour
+public class PlateElementController : MonoBehaviour
 {
 	[SerializeField] private TMP_Text plateName;
 	[SerializeField] private TMP_Text plateNumber;

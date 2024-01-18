@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ElementsPanelController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private PlateElementModel prefabOfPlate;
+    [SerializeField] private Transform panelOfPlates;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private ElementsPanelModel elementsPanelModel;
+
+	private void Start()
+	{
+		elementsPanelModel = GetComponent<ElementsPanelModel>();
+		List<PlateElement> allPlatesList = elementsPanelModel.GetListOfPlateElements();
+
+		foreach(PlateElement eachElementData in allPlatesList)
+		{
+			PlateElementModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
+			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
+		}
+	}
 }
