@@ -17,8 +17,6 @@ public class ElementsPanelShowerController : MonoBehaviour
 	{
 		InitializeNeededComponents();
 		ShowPlateElementsOnUI();
-		//yield return new WaitForEndOfFrame();
-		//elementsPanelView.SwitchClampingPlatesByLayout(false);
 		ShowNameListAndAmountOfPlatesOnUI();
 	}
 
