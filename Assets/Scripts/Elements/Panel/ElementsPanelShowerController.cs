@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlateElementNamespace;
+using UnityEngine.UI;
 
 public class ElementsPanelShowerController : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class ElementsPanelShowerController : MonoBehaviour
     [SerializeField] private Transform panelOfPlates;
 
 	private ElementsPanelShowerModel elementsPanelModel;
+	private VerticalLayoutGroup verticalLayoutForPlates;
 
-	private void Start()
+	private IEnumerator Start()
 	{
+		verticalLayoutForPlates = GetComponent<VerticalLayoutGroup>();
 		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
 		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfPlateElements();
 
@@ -20,5 +23,14 @@ public class ElementsPanelShowerController : MonoBehaviour
 			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
+
+		yield return new WaitForEndOfFrame();
+
+		SwitchClampingPlatesByLayout(false);
+	}
+
+	private void SwitchClampingPlatesByLayout(bool clamping)
+	{
+		verticalLayoutForPlates.enabled = clamping;
 	}
 }

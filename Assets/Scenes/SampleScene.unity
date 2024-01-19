@@ -393,8 +393,8 @@ GameObject:
   - component: {fileID: 806719818}
   - component: {fileID: 806719817}
   - component: {fileID: 806719819}
-  - component: {fileID: 806719821}
   - component: {fileID: 806719820}
+  - component: {fileID: 806719821}
   m_Layer: 5
   m_Name: Shower plates panel
   m_TagString: Untagged
