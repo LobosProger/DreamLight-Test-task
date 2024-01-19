@@ -17,6 +17,7 @@ public class ElementsPanelShowerController : MonoBehaviour
 	{
 		InitializeNeededComponents();
 		ShowPlateElementsOnUI();
+
 		yield return new WaitForEndOfFrame();
 		ShowNameListAndAmountOfPlatesOnUI();
 	}
@@ -30,11 +31,33 @@ public class ElementsPanelShowerController : MonoBehaviour
 	private void ShowPlateElementsOnUI()
 	{
 		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfPlateElements();
+		CreateEachElementByListOnUI(allPlatesList);
+	}
 
-		foreach (PlateElementData eachElementData in allPlatesList)
+	private void CreateEachElementByListOnUI(List<PlateElementData> plateElements)
+	{
+		StartCoroutine(CreatingEachElementByListOnUI(plateElements));
+	}
+
+	private IEnumerator CreatingEachElementByListOnUI(List<PlateElementData> plateElements)
+	{
+		ClearPanelOfPlateElements();
+		foreach (PlateElementData eachElementData in plateElements)
 		{
 			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates.transform);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
+		}
+		elementsPanelView.SwitchClampingPlatesByLayout(true);
+		
+		yield return new WaitForEndOfFrame();
+		elementsPanelView.SwitchClampingPlatesByLayout(false);
+	}
+
+	private void ClearPanelOfPlateElements()
+	{
+		foreach(Transform eachPlateElement in panelOfPlates.transform)
+		{
+			Destroy(eachPlateElement.gameObject);
 		}
 	}
 
@@ -45,5 +68,10 @@ public class ElementsPanelShowerController : MonoBehaviour
 
 		elementsPanelView.SwitchClampingPlatesByLayout(false);
 		elementsPanelView.ShowNameListAndAmountOfPlatesOnUI(nameOfList, amountOfPlatesInList);
+	}
+
+	public void ShowPlateElementsByListOnUI(List<PlateElementData> plateElements)
+	{
+		CreateEachElementByListOnUI(plateElements);
 	}
 }

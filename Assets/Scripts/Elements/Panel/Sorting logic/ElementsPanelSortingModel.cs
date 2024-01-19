@@ -7,20 +7,20 @@ using PlateElementNamespace;
 
 public class ElementsPanelSortingModel : MonoBehaviour
 {
-    [SerializeField] private VerticalLayoutGroup panelOfCreatedElements;
+	[SerializeField] private VerticalLayoutGroup panelOfCreatedElements;
 
-    private List<PlateElementData> GetListOfCreatedPlateElementsData()
-    {
+	private List<PlateElementData> GetListOfCreatedPlateElementsData()
+	{
 		List<PlateElementData> plateElementsData = new List<PlateElementData>();
 		List<PlateElementShowerModel> plateElementsModelList = panelOfCreatedElements.GetComponentsInChildren<PlateElementShowerModel>().ToList();
 
-		foreach(PlateElementShowerModel eachModel in plateElementsModelList)
+		foreach (PlateElementShowerModel eachModel in plateElementsModelList)
 		{
 			plateElementsData.Add(eachModel.GetPlateElementData());
 		}
 
 		return plateElementsData;
-    }
+	}
 
 	public List<PlateElementData> GetSortedListOfPlatesByNumber(bool descendingSort)
 	{
@@ -28,7 +28,8 @@ public class ElementsPanelSortingModel : MonoBehaviour
 		if (descendingSort)
 		{
 			sortingElements = sortingElements.OrderByDescending(element => element.GetNumberOfPlate()).ToList();
-		} else
+		}
+		else
 		{
 			sortingElements = sortingElements.OrderByDescending(element => element.GetNumberOfPlate()).Reverse().ToList();
 		}
