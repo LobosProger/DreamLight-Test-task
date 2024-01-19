@@ -2,6 +2,7 @@ using PlateElementNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class ElementsPanelStorageModel : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class ElementsPanelStorageModel : MonoBehaviour
 
 	public List<PlateElementData> GetSavedListFromMemory()
 	{
-		return null;
+		string jsonOfList = PlayerPrefs.GetString(keyOfStoringList);
+		List<PlateElementData> retrievingList = JsonConvert.DeserializeObject<List<PlateElementData>>(jsonOfList);
+		
+		return retrievingList;
 	}
 
-	public void SaveCreatedListIntoMemory()
+	public void SaveCreatedListIntoMemory(List<PlateElementData> retrievingList)
 	{
-
+		string jsonOfList = JsonConvert.SerializeObject(retrievingList);
+		PlayerPrefs.SetString(keyOfStoringList, jsonOfList);
 	}
 }
