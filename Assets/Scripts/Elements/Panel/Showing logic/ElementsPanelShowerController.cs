@@ -17,7 +17,6 @@ public class ElementsPanelShowerController : MonoBehaviour
 	{
 		InitializeNeededComponents();
 		ShowPlateElementsOnUI();
-
 		yield return new WaitForEndOfFrame();
 		ShowNameListAndAmountOfPlatesOnUI();
 	}
