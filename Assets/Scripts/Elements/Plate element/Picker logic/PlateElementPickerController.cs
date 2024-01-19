@@ -8,9 +8,11 @@ public class PlateElementPickerController : MonoBehaviour, IPointerDownHandler, 
 {
 	private PlateElementPickerModel plateElementPickerModel;
 
-	private void Start()
+	private IEnumerator Start()
 	{
+		yield return new WaitForEndOfFrame();
 		plateElementPickerModel = GetComponent<PlateElementPickerModel>();
+		plateElementPickerModel.CaptureInitialPlatePosition(transform.position);
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
@@ -28,15 +30,21 @@ public class PlateElementPickerController : MonoBehaviour, IPointerDownHandler, 
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		PlateElementPickerController anotherPlate = null;
+		PlateElementPickerModel anotherPlateModel = null;
+		PlateElementPickerController anotherPlateController = null;
 
-		if (IsEnteredInPointerAnotherPlateElement(eventData, out anotherPlate))
+		if (IsEnteredPointerInAnotherPlateElement(eventData, out anotherPlateModel))
 		{
-			Debug.Log($"Entered into: {anotherPlate.name}");
+			anotherPlateController = anotherPlateModel.GetComponent<PlateElementPickerController>();
+			ExchangePositionsOfPlates(anotherPlateModel, anotherPlateController);
+		} else
+		{
+			Vector2 oldPlatePosition = plateElementPickerModel.GetInitialPlatePosition();
+			SetPlatePosition(oldPlatePosition);
 		}
 	}
 
-	private bool IsEnteredInPointerAnotherPlateElement(PointerEventData eventData, out PlateElementPickerController anotherPlate)
+	private bool IsEnteredPointerInAnotherPlateElement(PointerEventData eventData, out PlateElementPickerModel anotherPlate)
 	{
 		anotherPlate = null;
 		List<RaycastResult> allRaycastedElementsInPointer = new List<RaycastResult>();
@@ -44,12 +52,27 @@ public class PlateElementPickerController : MonoBehaviour, IPointerDownHandler, 
 		EventSystem.current.RaycastAll(eventData, allRaycastedElementsInPointer);
 		foreach(RaycastResult eachRaycastedElement in  allRaycastedElementsInPointer)
 		{
-			if(eachRaycastedElement.gameObject != gameObject && eachRaycastedElement.gameObject.TryGetComponent(out anotherPlate))
+			if(eachRaycastedElement.gameObject != this.gameObject && eachRaycastedElement.gameObject.TryGetComponent(out anotherPlate))
 			{
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	private void ExchangePositionsOfPlates(PlateElementPickerModel anotherPlateModel, PlateElementPickerController anotherPlateController)
+	{
+		Vector2 newPositionForThisPlate = anotherPlateModel.GetInitialPlatePosition();
+		Vector2 newPositionForExchangingPlate = plateElementPickerModel.GetInitialPlatePosition();
+
+		SetPlatePosition(newPositionForThisPlate);
+		anotherPlateController.SetPlatePosition(newPositionForExchangingPlate);
+	}
+
+	public void SetPlatePosition(Vector2 newPosition)
+	{
+		plateElementPickerModel.CaptureInitialPlatePosition(newPosition);
+		transform.position = newPosition;
 	}
 }

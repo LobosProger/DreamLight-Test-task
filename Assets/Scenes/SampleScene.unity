@@ -502,6 +502,8 @@ MonoBehaviour:
     numberOfPlate: 10
   - nameOfPlate: Meat
     numberOfPlate: 5
+  - nameOfPlate: Car
+    numberOfPlate: 128
 --- !u!114 &806719821
 MonoBehaviour:
   m_ObjectHideFlags: 0
