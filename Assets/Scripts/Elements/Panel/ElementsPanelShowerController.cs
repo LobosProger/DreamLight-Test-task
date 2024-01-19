@@ -16,17 +16,21 @@ public class ElementsPanelShowerController : MonoBehaviour
 	{
 		verticalLayoutForPlates = GetComponent<VerticalLayoutGroup>();
 		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
+		ShowPlateElementsOnUI();
+
+		yield return new WaitForEndOfFrame();
+		SwitchClampingPlatesByLayout(false);
+	}
+
+	private void ShowPlateElementsOnUI()
+	{
 		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfPlateElements();
 
-		foreach(PlateElementData eachElementData in allPlatesList)
+		foreach (PlateElementData eachElementData in allPlatesList)
 		{
 			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
-
-		yield return new WaitForEndOfFrame();
-
-		SwitchClampingPlatesByLayout(false);
 	}
 
 	private void SwitchClampingPlatesByLayout(bool clamping)

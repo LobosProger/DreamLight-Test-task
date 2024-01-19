@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandler
 {
-	private PlateElementPickerModel plateElementPickerModel;
+	private PlateElementChangePlaceModel plateElementModel;
 
 	private IEnumerator Start()
 	{
@@ -13,13 +13,13 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		// Because in the start of frame, it assigns zero position to layout elements, so just wait one frame
 		yield return new WaitForEndOfFrame();
 
-		plateElementPickerModel = GetComponent<PlateElementPickerModel>();
-		plateElementPickerModel.CaptureInitialPlatePosition(transform.position);
+		plateElementModel = GetComponent<PlateElementChangePlaceModel>();
+		plateElementModel.CaptureInitialPlatePosition(transform.position);
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		PlateElementPickerModel anotherPlateModel = null;
+		PlateElementChangePlaceModel anotherPlateModel = null;
 		PlateElementChangePlaceController anotherPlateController = null;
 
 		if (IsEnteredPointerInAnotherPlateElement(eventData, out anotherPlateModel))
@@ -33,22 +33,26 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		}
 	}
 
-	private void ExchangePositionsOfPlates(PlateElementPickerModel anotherPlateModel, PlateElementChangePlaceController anotherPlateController)
+	private void ExchangePositionsOfPlates(PlateElementChangePlaceModel anotherPlateModel, 
+		PlateElementChangePlaceController anotherPlateController)
 	{
+		Transform newLayoutListForThisPlate = anotherPlateModel.GetLayoutParentOfPlate();
 		Vector2 newPositionForThisPlate = anotherPlateModel.GetInitialPlatePosition();
-		Vector2 newPositionForExchangingPlate = plateElementPickerModel.GetInitialPlatePosition();
+		
+		Transform newLayoutListExchangingPlate = plateElementModel.GetLayoutParentOfPlate();
+		Vector2 newPositionForExchangingPlate = plateElementModel.GetInitialPlatePosition();
 
-		SetPlatePosition(newPositionForThisPlate);
-		anotherPlateController.SetPlatePosition(newPositionForExchangingPlate);
+		SetNewPlatePositionAndList(newPositionForThisPlate, newLayoutListForThisPlate);
+		anotherPlateController.SetNewPlatePositionAndList(newPositionForExchangingPlate, newLayoutListExchangingPlate);
 	}
 
 	private void ReturnPlateToOldPosition()
 	{
-		Vector2 oldPlatePosition = plateElementPickerModel.GetInitialPlatePosition();
-		SetPlatePosition(oldPlatePosition);
+		Vector2 oldPlatePosition = plateElementModel.GetInitialPlatePosition();
+		SetNewPlatePositionAndList(oldPlatePosition, transform.parent);
 	}
 
-	private bool IsEnteredPointerInAnotherPlateElement(PointerEventData eventData, out PlateElementPickerModel anotherPlate)
+	private bool IsEnteredPointerInAnotherPlateElement(PointerEventData eventData, out PlateElementChangePlaceModel anotherPlate)
 	{
 		anotherPlate = null;
 		List<RaycastResult> allRaycastedElementsInPointer = new List<RaycastResult>();
@@ -65,9 +69,10 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		return false;
 	}
 
-	public void SetPlatePosition(Vector2 newPosition)
+	public void SetNewPlatePositionAndList(Vector2 newPosition, Transform listLayout)
 	{
-		plateElementPickerModel.CaptureInitialPlatePosition(newPosition);
+		plateElementModel.CaptureInitialPlatePosition(newPosition);
+		plateElementModel.SetLayoutParentOfPlate(listLayout);
 		transform.position = newPosition;
 	}
 }

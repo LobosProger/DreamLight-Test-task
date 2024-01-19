@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PlateElementPickerModel : MonoBehaviour
 {
-    private Vector2 initialPlatePosition;
     private Vector2 capturedOffsetPosition;
-
-    public void CaptureInitialPlatePosition(Vector2 initialPosition)
-    {
-		initialPlatePosition = initialPosition;
-	}
 
     public void CapturePointerPositionForOffset(Vector2 capturedPosition)
     {
@@ -22,9 +16,4 @@ public class PlateElementPickerModel : MonoBehaviour
     {
         return capturedOffsetPosition;
 	}
-
-    public Vector2 GetInitialPlatePosition()
-    {
-        return initialPlatePosition;
-    }
 }
