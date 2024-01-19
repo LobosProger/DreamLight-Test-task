@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196c81e88b2c5a4db0bc7cd869a89fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfList: 
   platesList:
   - nameOfPlate: Bee
     numberOfPlate: 10
@@ -478,6 +479,7 @@ MonoBehaviour:
     numberOfPlate: 5
   - nameOfPlate: Car
     numberOfPlate: 128
+  panelOfPlates: {fileID: 0}
 --- !u!114 &806719821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabOfPlate: {fileID: 2000258033929734628, guid: b60602ca4c8982147b30df86af29743d, type: 3}
   panelOfPlates: {fileID: 1719896104}
+  nameOfList: {fileID: 0}
+  amountOfPlatesInList: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,8 +691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -64.628845}
+  m_SizeDelta: {x: 0, y: -129.2577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719896104
 MonoBehaviour:

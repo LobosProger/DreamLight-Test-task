@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlateElementNamespace;
 using UnityEngine.UI;
+using TMPro;
 
 public class ElementsPanelShowerController : MonoBehaviour
 {
     [SerializeField] private PlateElementShowerModel prefabOfPlate;
 	[SerializeField] private VerticalLayoutGroup panelOfPlates;
+	[SerializeField] private TMP_Text nameOfList;
+	[SerializeField] private TMP_Text amountOfPlatesInList;
 
 	private ElementsPanelShowerModel elementsPanelModel;
 	
@@ -29,6 +32,12 @@ public class ElementsPanelShowerController : MonoBehaviour
 			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates.transform);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
+	}
+
+	private void ShowAmountOfPlatesOnUI()
+	{
+		nameOfList.text = elementsPanelModel.GetNameOfList();
+		amountOfPlatesInList.text = elementsPanelModel.GetAmountOfPlatesInList().ToString();
 	}
 
 	private void SwitchClampingPlatesByLayout(bool clamping)
