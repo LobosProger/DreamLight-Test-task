@@ -7,14 +7,12 @@ using UnityEngine.UI;
 public class ElementsPanelShowerController : MonoBehaviour
 {
     [SerializeField] private PlateElementShowerModel prefabOfPlate;
-    [SerializeField] private Transform panelOfPlates;
+	[SerializeField] private VerticalLayoutGroup panelOfPlates;
 
 	private ElementsPanelShowerModel elementsPanelModel;
-	private VerticalLayoutGroup verticalLayoutForPlates;
-
+	
 	private IEnumerator Start()
 	{
-		verticalLayoutForPlates = GetComponent<VerticalLayoutGroup>();
 		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
 		ShowPlateElementsOnUI();
 
@@ -28,13 +26,13 @@ public class ElementsPanelShowerController : MonoBehaviour
 
 		foreach (PlateElementData eachElementData in allPlatesList)
 		{
-			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates);
+			PlateElementShowerModel instantiatedPlateOnUI = Instantiate(prefabOfPlate, panelOfPlates.transform);
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
 	}
 
 	private void SwitchClampingPlatesByLayout(bool clamping)
 	{
-		verticalLayoutForPlates.enabled = clamping;
+		panelOfPlates.enabled = clamping;
 	}
 }
