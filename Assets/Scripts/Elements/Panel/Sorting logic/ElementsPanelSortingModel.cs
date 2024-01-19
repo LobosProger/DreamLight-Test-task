@@ -12,8 +12,8 @@ public class ElementsPanelSortingModel : MonoBehaviour
 	private List<PlateElementData> GetListOfCreatedPlateElementsData()
 	{
 		List<PlateElementData> plateElementsData = new List<PlateElementData>();
-		List<PlateElementShowerModel> plateElementsModelList = panelOfCreatedElements.GetComponentsInChildren<PlateElementShowerModel>().ToList();
 
+		List<PlateElementShowerModel> plateElementsModelList = panelOfCreatedElements.GetComponentsInChildren<PlateElementShowerModel>().ToList();
 		foreach (PlateElementShowerModel eachModel in plateElementsModelList)
 		{
 			plateElementsData.Add(eachModel.GetPlateElementData());
@@ -32,6 +32,21 @@ public class ElementsPanelSortingModel : MonoBehaviour
 		else
 		{
 			sortingElements = sortingElements.OrderByDescending(element => element.GetNumberOfPlate()).Reverse().ToList();
+		}
+
+		return sortingElements;
+	}
+
+	public List<PlateElementData> GetSortedListOfPlatesByName(bool descendingSort)
+	{
+		List<PlateElementData> sortingElements = GetListOfCreatedPlateElementsData();
+		if (descendingSort)
+		{
+			sortingElements = sortingElements.OrderByDescending(element => element.GetNameOfPlate()).ToList();
+		}
+		else
+		{
+			sortingElements = sortingElements.OrderByDescending(element => element.GetNameOfPlate()).Reverse().ToList();
 		}
 
 		return sortingElements;

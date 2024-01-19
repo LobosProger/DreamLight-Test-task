@@ -15,12 +15,20 @@ public class ElementsPanelSortingController : MonoBehaviour
 	{
 		elementsShowerController = GetComponent<ElementsPanelShowerController>();
 		elementsPanelSortingModel = GetComponent<ElementsPanelSortingModel>();
+		
 		sortingByNumberToggle.OnSwitchedToDescendingOrder += SortPlateElementsByNumber;
+		sortingByNameToggle.OnSwitchedToDescendingOrder += SortPlateElementsByName;
 	}
 
 	private void SortPlateElementsByNumber(bool descendingOrder)
 	{
 		List<PlateElementData> sortedElements = elementsPanelSortingModel.GetSortedListOfPlatesByNumber(descendingOrder);
+		elementsShowerController.ShowPlateElementsOnUI(sortedElements);
+	}
+
+	private void SortPlateElementsByName(bool descendingOrder)
+	{
+		List<PlateElementData> sortedElements = elementsPanelSortingModel.GetSortedListOfPlatesByName(descendingOrder);
 		elementsShowerController.ShowPlateElementsOnUI(sortedElements);
 	}
 }
