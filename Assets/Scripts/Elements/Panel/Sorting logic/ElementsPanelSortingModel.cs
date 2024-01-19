@@ -12,8 +12,8 @@ public class ElementsPanelSortingModel : MonoBehaviour
 	private List<PlateElementData> GetListOfCreatedPlateElementsData()
 	{
 		List<PlateElementData> plateElementsData = new List<PlateElementData>();
-
 		List<PlateElementShowerModel> plateElementsModelList = panelOfCreatedElements.GetComponentsInChildren<PlateElementShowerModel>().ToList();
+		
 		foreach (PlateElementShowerModel eachModel in plateElementsModelList)
 		{
 			plateElementsData.Add(eachModel.GetPlateElementData());
