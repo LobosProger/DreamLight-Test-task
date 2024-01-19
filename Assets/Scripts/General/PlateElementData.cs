@@ -10,6 +10,12 @@ namespace PlateElementNamespace
 		[SerializeField] private string nameOfPlate;
 		[SerializeField] private int numberOfPlate;
 
+		public PlateElementData(string nameOfPlate, int numberOfPlate)
+		{
+			this.nameOfPlate = nameOfPlate;
+			this.numberOfPlate = numberOfPlate;
+		}
+
 		public string GetNameOfPlate()
 		{
 			return nameOfPlate;

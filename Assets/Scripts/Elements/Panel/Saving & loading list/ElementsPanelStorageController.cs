@@ -16,6 +16,7 @@ public class ElementsPanelStorageController : MonoBehaviour
 
 	private void Start()
 	{
+		elementsPanelShowerController = GetComponent<ElementsPanelShowerController>();
 		elementsPanelStorageModel = GetComponent<ElementsPanelStorageModel>();
 
 		saveList.onClick.AddListener(SaveCreatedList);
