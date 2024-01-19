@@ -9,25 +9,23 @@ public class ElementsPanelShowerController : MonoBehaviour
 {
     [SerializeField] private PlateElementShowerModel prefabOfPlate;
 	[SerializeField] private VerticalLayoutGroup panelOfPlates;
-	[SerializeField] private TMP_Text nameOfList;
-	[SerializeField] private TMP_Text amountOfPlatesInList;
 
 	private ElementsPanelShowerModel elementsPanelModel;
+	private ElementsPanelShowerView elementsPanelView;
 	
 	private IEnumerator Start()
 	{
-		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
+		InitializeNeededComponents();
 		ShowPlateElementsOnUI();
 
 		yield return new WaitForEndOfFrame();
-		SwitchClampingPlatesByLayout(false);
-		ShowAmountOfPlatesAndNameListOnUI();
-		PlateElementEvents.OnChangedPlaceOfPlateElement += ShowAmountOfPlatesAndNameListOnUI;
+		ShowNameListAndAmountOfPlatesOnUI();
 	}
 
-	private void OnDestroy()
+	private void InitializeNeededComponents()
 	{
-		PlateElementEvents.OnChangedPlaceOfPlateElement -= ShowAmountOfPlatesAndNameListOnUI;
+		elementsPanelModel = GetComponent<ElementsPanelShowerModel>();
+		elementsPanelView = GetComponent<ElementsPanelShowerView>();
 	}
 
 	private void ShowPlateElementsOnUI()
@@ -41,14 +39,12 @@ public class ElementsPanelShowerController : MonoBehaviour
 		}
 	}
 
-	private void ShowAmountOfPlatesAndNameListOnUI()
+	private void ShowNameListAndAmountOfPlatesOnUI()
 	{
-		nameOfList.text = elementsPanelModel.GetNameOfList();
-		amountOfPlatesInList.text = elementsPanelModel.GetAmountOfPlatesInList().ToString();
-	}
+		string nameOfList = elementsPanelModel.GetNameOfList();
+		int amountOfPlatesInList = elementsPanelModel.GetAmountOfPlatesInList();
 
-	private void SwitchClampingPlatesByLayout(bool clamping)
-	{
-		panelOfPlates.enabled = clamping;
+		elementsPanelView.SwitchClampingPlatesByLayout(false);
+		elementsPanelView.ShowNameListAndAmountOfPlatesOnUI(nameOfList, amountOfPlatesInList);
 	}
 }
