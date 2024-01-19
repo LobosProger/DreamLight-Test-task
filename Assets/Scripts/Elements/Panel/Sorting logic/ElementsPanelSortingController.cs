@@ -21,6 +21,6 @@ public class ElementsPanelSortingController : MonoBehaviour
 	private void SortPlateElementsByNumber(bool descendingOrder)
 	{
 		List<PlateElementData> sortedElements = elementsPanelSortingModel.GetSortedListOfPlatesByNumber(descendingOrder);
-		elementsShowerController.ShowPlateElementsByListOnUI(sortedElements);
+		elementsShowerController.ShowPlateElementsOnUI(sortedElements);
 	}
 }
