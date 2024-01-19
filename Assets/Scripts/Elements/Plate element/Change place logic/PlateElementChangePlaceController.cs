@@ -26,6 +26,8 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		{
 			anotherPlateController = anotherPlateModel.GetComponent<PlateElementChangePlaceController>();
 			ExchangePositionsOfPlates(anotherPlateModel, anotherPlateController);
+			
+			PlateElementEvents.OnChangedPlaceOfPlateElement?.Invoke();
 		}
 		else
 		{

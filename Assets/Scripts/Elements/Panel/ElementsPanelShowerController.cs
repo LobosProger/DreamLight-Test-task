@@ -21,6 +21,13 @@ public class ElementsPanelShowerController : MonoBehaviour
 
 		yield return new WaitForEndOfFrame();
 		SwitchClampingPlatesByLayout(false);
+		ShowAmountOfPlatesAndNameListOnUI();
+		PlateElementEvents.OnChangedPlaceOfPlateElement += ShowAmountOfPlatesAndNameListOnUI;
+	}
+
+	private void OnDestroy()
+	{
+		PlateElementEvents.OnChangedPlaceOfPlateElement -= ShowAmountOfPlatesAndNameListOnUI;
 	}
 
 	private void ShowPlateElementsOnUI()
@@ -34,7 +41,7 @@ public class ElementsPanelShowerController : MonoBehaviour
 		}
 	}
 
-	private void ShowAmountOfPlatesOnUI()
+	private void ShowAmountOfPlatesAndNameListOnUI()
 	{
 		nameOfList.text = elementsPanelModel.GetNameOfList();
 		amountOfPlatesInList.text = elementsPanelModel.GetAmountOfPlatesInList().ToString();
