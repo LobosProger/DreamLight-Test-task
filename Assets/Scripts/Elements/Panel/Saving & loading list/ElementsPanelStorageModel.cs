@@ -6,7 +6,12 @@ using Newtonsoft.Json;
 
 public class ElementsPanelStorageModel : MonoBehaviour
 {
-	[SerializeField] private string keyOfStoringList;
+	// Initially, there is was created logic, that assigns key for storage via Unity inspector (by writing preferred name of key)
+	// But, I have changed below logic by assigning key via adding name and hash.
+	// It provides ability to automatically save everything and resolves problem if for example,
+	// programmer or game designer forgot about assigning key to list for storage
+
+	private string keyOfStoringList => gameObject.name + gameObject.GetHashCode().ToString();
 
 	private List<PlateElementDataForJSON> GetSpecialPreparedListOfPlatesFromMemory()
 	{
@@ -63,7 +68,7 @@ public class ElementsPanelStorageModel : MonoBehaviour
 
 
 	// This class was prepared because PlateElementData doesn't allow to convert to JSON during private variables
-	// For it was prepared another class, allows to conducting transformations into JSON format
+	// For it was prepared another class, allows to conducting transformations into JSON format with public variables
 	private class PlateElementDataForJSON
 	{
 		public PlateElementDataForJSON(string nameOfPlate, int numberOfPlate)
