@@ -1,6 +1,6 @@
 # Interactable lists & plates
  
-* Completed test task in the company DreamLight (VARDIX GROUP).
+* Completed test task for the company DreamLight (VARDIX GROUP).
 * Developing taken 2 days.
 * Developed mechanics of interactable plates, which can be moved in lists, sorting them by number & name, storage of list with plates in memory.
 * Codebase was followed to SOLID principles, used architecture pattern MVC and Observer for creating modular code.
