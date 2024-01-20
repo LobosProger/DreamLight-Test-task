@@ -25,4 +25,14 @@ public class PlateElementChangePlaceModel : MonoBehaviour
     {
         transform.SetParent(parentLayout);
     }
+
+	public int GetSiblingIndexOfPlate()
+	{
+		return transform.GetSiblingIndex();
+	}
+
+	public void SetSiblingIndexOfPlate(int newSiblingIndex)
+	{
+		transform.SetSiblingIndex(newSiblingIndex);
+	}
 }

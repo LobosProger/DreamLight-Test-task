@@ -20,11 +20,17 @@ public class ElementsPanelShowerView : MonoBehaviour
 			instantiatedPlateOnUI.SetPlateElementData(eachElementData);
 		}
 
-		// Switch layout to turn on state to automatically refresh plae elements to assign to them position
+		/*
+		// Switch layout to turn on state to automatically refresh plate elements to assign to them position
 		SwitchClampingPlatesByLayout(true);
 		yield return new WaitForEndOfFrame();
 		// Switch layout to turn off state to able move any plate element to another list
 		SwitchClampingPlatesByLayout(false);
+
+		yield return new WaitForEndOfFrame();
+		SwitchClampingPlatesByLayout(false);
+		*/
+		yield return null;
 	}
 
 	private void ClearPanelOfPlateElements()

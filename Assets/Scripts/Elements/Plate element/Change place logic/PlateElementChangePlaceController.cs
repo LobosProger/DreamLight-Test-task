@@ -32,8 +32,9 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		}
 		else if(IsEnteredPointerInAnotherList(eventData, out anotherListLayout))
 		{
-
-		} else
+			ChangeListOfPlateElement(anotherListLayout);
+		}
+		else
 		{
 			ReturnPlateToOldPosition();
 		}
@@ -51,17 +52,16 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		Vector2 newPositionForExchangingPlate = plateElementModel.GetInitialPlatePosition();
 		int newSiblingIndexInLayoutForExchangingPlate = transform.GetSiblingIndex();
 
-		SetNewPlatePositionAndList(newPositionForThisPlate, newLayoutListForThisPlate);
+		SetNewPlatePositionAndList(newSiblingIndexInLayoutForThisPlate, newLayoutListForThisPlate);
 		transform.SetSiblingIndex(newSiblingIndexInLayoutForThisPlate);
 
-		anotherPlateController.SetNewPlatePositionAndList(newPositionForExchangingPlate, newLayoutListExchangingPlate);
+		anotherPlateController.SetNewPlatePositionAndList(newSiblingIndexInLayoutForExchangingPlate, newLayoutListExchangingPlate);
 		anotherPlateController.transform.SetSiblingIndex(newSiblingIndexInLayoutForExchangingPlate);
 	}
 
-	private void ReturnPlateToOldPosition()
+	private void ChangeListOfPlateElement(VerticalLayoutGroup anotherListLayout)
 	{
-		Vector2 oldPlatePosition = plateElementModel.GetInitialPlatePosition();
-		SetNewPlatePositionAndList(oldPlatePosition, transform.parent);
+		plateElementModel.SetLayoutParentOfPlate(anotherListLayout.transform);
 	}
 
 	// TODO: Refactor it, add logic in another script
@@ -99,15 +99,32 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 			}
 		}
 
-		Debug.Log("Same list!");
+		Debug.Log("Same list or didn't detected!");
 		return false;
 	}
 
-	public void SetNewPlatePositionAndList(Vector2 newPosition, Transform listLayout)
+	private void ReturnPlateToOldPosition()
 	{
-		plateElementModel.CaptureInitialPlatePosition(newPosition);
+		/*Vector2 oldPlatePosition = plateElementModel.GetInitialPlatePosition();
+		int oldSiblingIndex = plateElementModel.GetSiblingIndexOfPlate();
+		SetNewPlatePositionAndList(oldSiblingIndex, transform.parent);*/
+
+		transform.position = plateElementModel.GetInitialPlatePosition();
+	}
+
+	public void SetNewPlatePositionAndList(int newSiblingIndex, Transform listLayout)
+	{
 		plateElementModel.SetLayoutParentOfPlate(listLayout);
-		transform.position = newPosition;
+		transform.SetSiblingIndex(newSiblingIndex);
+		StartCoroutine(WaitRefreshingLayoutListAndCaptureInitialPosition());
+	}
+
+	private IEnumerator WaitRefreshingLayoutListAndCaptureInitialPosition()
+	{
+		yield return new WaitForEndOfFrame();
+
+		Vector2 newInitialPositionOfPlate = transform.position;
+		plateElementModel.CaptureInitialPlatePosition(newInitialPositionOfPlate);
 	}
 
 	// TODO: Create logic of capturing needed data for simplify logic in function ExchangePlatePositions
