@@ -6,7 +6,7 @@
 * Codebase was followed to SOLID principles, used architecture pattern MVC and Observer for creating modular code.
 * Below you can see overview demonstration of work:
 
-https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/134afd13-7cbb-4ca7-ac7a-4d0cd9fe0326
+https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/21b68729-e80e-4cf9-a0ca-19748de167f8
 
 # Interactable plates
 * Below you can see a behaviour of plates.
@@ -23,7 +23,7 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/b6c5b2f2-613
 # Storage logic
 * There is developed storage logic, which allows to save all plates in list and then load it:
 
-https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/9c56ed38-028a-41ed-aef1-5952a2697f04
+https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebc9ca34-11bb-44a3-8239-101738965f84
 
 # Assign name logic
 * Easily way to assign name to list via inspector window from Unity and entering in PlayMode:
