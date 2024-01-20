@@ -45,18 +45,13 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 	{
 		// TODO: Convert into structures, refactor 
 		Transform newLayoutListForThisPlate = anotherPlateModel.GetLayoutParentOfPlate();
-		Vector2 newPositionForThisPlate = anotherPlateModel.GetInitialPlatePosition();
 		int newSiblingIndexInLayoutForThisPlate = anotherPlateModel.transform.GetSiblingIndex();
 
 		Transform newLayoutListExchangingPlate = plateElementModel.GetLayoutParentOfPlate();
-		Vector2 newPositionForExchangingPlate = plateElementModel.GetInitialPlatePosition();
 		int newSiblingIndexInLayoutForExchangingPlate = transform.GetSiblingIndex();
 
 		SetNewPlatePositionAndList(newSiblingIndexInLayoutForThisPlate, newLayoutListForThisPlate);
-		transform.SetSiblingIndex(newSiblingIndexInLayoutForThisPlate);
-
 		anotherPlateController.SetNewPlatePositionAndList(newSiblingIndexInLayoutForExchangingPlate, newLayoutListExchangingPlate);
-		anotherPlateController.transform.SetSiblingIndex(newSiblingIndexInLayoutForExchangingPlate);
 	}
 
 	private void ChangeListOfPlateElement(VerticalLayoutGroup anotherListLayout)
@@ -105,17 +100,13 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 
 	private void ReturnPlateToOldPosition()
 	{
-		/*Vector2 oldPlatePosition = plateElementModel.GetInitialPlatePosition();
-		int oldSiblingIndex = plateElementModel.GetSiblingIndexOfPlate();
-		SetNewPlatePositionAndList(oldSiblingIndex, transform.parent);*/
-
 		transform.position = plateElementModel.GetInitialPlatePosition();
 	}
 
 	public void SetNewPlatePositionAndList(int newSiblingIndex, Transform listLayout)
 	{
 		plateElementModel.SetLayoutParentOfPlate(listLayout);
-		transform.SetSiblingIndex(newSiblingIndex);
+		plateElementModel.SetSiblingIndexOfPlate(newSiblingIndex);
 		StartCoroutine(WaitRefreshingLayoutListAndCaptureInitialPosition());
 	}
 
