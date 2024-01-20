@@ -15,7 +15,7 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/134afd13-7cb
 https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/17a06735-c736-456e-b88e-5294422c0ea6
 
 # Sorting logic
-* There are developed logic of sorting plates by name & number in ascending and descending order.
+* There is developed logic of sorting plates by name & number in ascending and descending order.
 * Sorting was developed for numbers and names (by alphabetical order):
 
 https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/b6c5b2f2-6135-46d1-890e-6e1ab151d87b
