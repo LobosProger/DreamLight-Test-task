@@ -33,7 +33,8 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/9c56ed38-028
 </div>
 
 # Process developing
-* During accomplishment, I used Kanban board to set tasks for developing features:
+* During accomplishment, I used Kanban board to set tasks for developing features.
+* By it, I simplified completion by small parts:
 
 <div align="center">
  <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/0a68542b-659f-4725-b869-3c308ad28f78" />
