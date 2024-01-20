@@ -32,6 +32,15 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebc9ca34-11b
  <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ce51b605-67df-4907-8c74-752137fc19b3" />
 </div>
 
+# Organized hierarchy & prefabs
+* All prefabs were created in organized way and splitted.
+* For example, main prefab of panel was created as a prefab, but panel with toggles was created as prefab variant:
+
+<div align="center">
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/a9781515-a0dc-4ae0-ac72-8e5a3804b988" />
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebd99e0f-b97c-4926-aa09-4c427e73fc89" />
+</div>
+
 # Process developing
 * During accomplishment, I used Kanban board to set tasks for developing features.
 * By it, I simplified completion by small parts:
