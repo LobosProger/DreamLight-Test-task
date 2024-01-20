@@ -61,6 +61,7 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 	{
 		// After assigning new list, the sibling index will be automatically attached to the plate element
 		plateElementModel.SetLayoutParentOfPlate(anotherListLayout.transform);
+		PlateElementEvents.OnChangedListOfPlateElement?.Invoke();
 	}
 
 	private IEnumerator WaitRefreshingLayoutListAndCaptureInitialPosition()

@@ -1348,7 +1348,7 @@ MonoBehaviour:
     numberOfPlate: 5
   - nameOfPlate: Car
     numberOfPlate: 128
-  panelOfPlates: {fileID: 0}
+  panelOfPlates: {fileID: 7193035078270153918}
 --- !u!114 &3662622101559781322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,7 +1390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a10abc47d75cea48b27352279469a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyOfStoringList: Elements
 --- !u!114 &8558481201613969143
 MonoBehaviour:
   m_ObjectHideFlags: 0

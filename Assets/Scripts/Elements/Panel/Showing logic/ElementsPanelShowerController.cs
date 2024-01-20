@@ -18,6 +18,14 @@ public class ElementsPanelShowerController : MonoBehaviour
 		InitializeNeededComponents();
 		ShowPlateElementsOnUI();
 		ShowNameListAndAmountOfPlatesOnUI();
+
+		// After changing by plate element list, we trigger our list on updating actual amount of elements
+		PlateElementEvents.OnChangedListOfPlateElement += ShowNameListAndAmountOfPlatesOnUI;
+	}
+
+	private void OnDestroy()
+	{
+		PlateElementEvents.OnChangedListOfPlateElement -= ShowNameListAndAmountOfPlatesOnUI;
 	}
 
 	private void InitializeNeededComponents()
@@ -28,7 +36,7 @@ public class ElementsPanelShowerController : MonoBehaviour
 
 	private void ShowPlateElementsOnUI()
 	{
-		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfPlateElements();
+		List<PlateElementData> allPlatesList = elementsPanelModel.GetListOfAssignedPlateElementsFromInspector();
 		elementsPanelView.ShowPlateElementsByListOnUI(prefabOfPlate, allPlatesList);
 	}
 

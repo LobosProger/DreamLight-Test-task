@@ -10,7 +10,7 @@ public class ElementsPanelShowerModel : MonoBehaviour
     [SerializeField] private List<PlateElementData> platesList = new List<PlateElementData>();
 	[SerializeField] private VerticalLayoutGroup panelOfPlates;
 
-	public List<PlateElementData> GetListOfPlateElements()
+	public List<PlateElementData> GetListOfAssignedPlateElementsFromInspector()
 	{
 		return platesList;
 	}
@@ -22,6 +22,6 @@ public class ElementsPanelShowerModel : MonoBehaviour
 
 	public int GetAmountOfPlatesInList()
 	{
-		return platesList.Count;
+		return panelOfPlates.transform.childCount;
 	}
 }
