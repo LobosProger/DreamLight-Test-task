@@ -10,7 +10,7 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/134afd13-7cb
 
 # Interactable plates
 * Below you can see a behaviour of plates.
-* User can drag them, put it in another list or place in another plate position:
+* User can drag them, put it in another list or place in another plate position. But if plate element didn't detect another plate or list, it returns to initial position:
 
 https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/17a06735-c736-456e-b88e-5294422c0ea6
 
