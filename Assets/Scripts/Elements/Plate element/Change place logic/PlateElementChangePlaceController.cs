@@ -7,6 +7,7 @@ using PlateElementLayoutSnapshotNamespace;
 
 public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandler
 {
+	private PlateElementDetectorController plateElementDetectorController;
 	private PlateElementChangePlaceModel plateElementModel;
 
 	private IEnumerator Start()
@@ -15,23 +16,24 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		// Because in the start of frame, it assigns zero position to layout elements, so just wait one frame
 		yield return new WaitForEndOfFrame();
 
+		plateElementDetectorController = GetComponent<PlateElementDetectorController>();
 		plateElementModel = GetComponent<PlateElementChangePlaceModel>();
 		plateElementModel.CaptureInitialPlatePosition(transform.position);
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		// TODO: Refactor it, remove model, write method which gives snapshot
-		PlateElementChangePlaceModel anotherPlateModel = null;
 		PlateElementChangePlaceController anotherPlateController = null;
 		VerticalLayoutGroup anotherListLayout = null;
 
-		if (IsEnteredPointerInAnotherPlateElement(eventData, out anotherPlateModel))
+		bool isDetectedAnotherPlate = plateElementDetectorController.IsEnteredPointerInAnotherPlateElement(eventData, out anotherPlateController);
+		bool isDetectedAnotherList = plateElementDetectorController.IsEnteredPointerInAnotherList(eventData, out anotherListLayout);
+		
+		if (isDetectedAnotherPlate)
 		{
-			anotherPlateController = anotherPlateModel.GetComponent<PlateElementChangePlaceController>();
-			ExchangePositionsOfPlates(anotherPlateModel, anotherPlateController);
+			ExchangePositionsOfPlates(anotherPlateController);
 		}
-		else if(IsEnteredPointerInAnotherList(eventData, out anotherListLayout))
+		else if(isDetectedAnotherList)
 		{
 			ChangeListOfPlateElement(anotherListLayout);
 		}
@@ -41,54 +43,13 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		}
 	}
 
-	private void ExchangePositionsOfPlates(PlateElementChangePlaceModel anotherPlateModel, 
-		PlateElementChangePlaceController anotherPlateController)
+	private void ExchangePositionsOfPlates(PlateElementChangePlaceController anotherPlateController)
 	{
-		// TODO: Convert into structures, refactor 
 		PlateElementLayoutSnapshot newLayoutDataForThisPlate = PlateElementLayoutSnapshot.CaptureLayoutSnapshotOfPlate(anotherPlateController.transform);
 		PlateElementLayoutSnapshot newLayoutDataForExchangingPlate = PlateElementLayoutSnapshot.CaptureLayoutSnapshotOfPlate(transform);
 
 		SetNewPlatePositionAndList(newLayoutDataForThisPlate);
 		anotherPlateController.SetNewPlatePositionAndList(newLayoutDataForExchangingPlate);
-	}
-
-	// TODO: Refactor it, add logic in another script
-	private bool IsEnteredPointerInAnotherPlateElement(PointerEventData eventData, out PlateElementChangePlaceModel anotherPlate)
-	{
-		anotherPlate = null;
-		List<RaycastResult> allRaycastedElementsInPointer = new List<RaycastResult>();
-
-		EventSystem.current.RaycastAll(eventData, allRaycastedElementsInPointer);
-		foreach (RaycastResult eachRaycastedElement in allRaycastedElementsInPointer)
-		{
-			if (eachRaycastedElement.gameObject != this.gameObject && eachRaycastedElement.gameObject.TryGetComponent(out anotherPlate))
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	// TODO: Refactor it, add logic in another script
-	private bool IsEnteredPointerInAnotherList(PointerEventData eventData, out VerticalLayoutGroup anotherList)
-	{
-		anotherList = null;
-		List<RaycastResult> allRaycastedElementsInPointer = new List<RaycastResult>();
-
-		EventSystem.current.RaycastAll(eventData, allRaycastedElementsInPointer);
-		foreach (RaycastResult eachRaycastedElement in allRaycastedElementsInPointer)
-		{
-			if (eachRaycastedElement.gameObject != plateElementModel.GetLayoutParentOfPlate().gameObject
-				&& eachRaycastedElement.gameObject.TryGetComponent(out anotherList))
-			{
-				Debug.Log("Another list!");
-				return true;
-			}
-		}
-
-		Debug.Log("Same list or didn't detected!");
-		return false;
 	}
 
 	private void ReturnPlateToOldPosition()
@@ -98,6 +59,7 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 
 	private void ChangeListOfPlateElement(VerticalLayoutGroup anotherListLayout)
 	{
+		// After assigning new list, the sibling index will be automatically attached to the plate element
 		plateElementModel.SetLayoutParentOfPlate(anotherListLayout.transform);
 	}
 
