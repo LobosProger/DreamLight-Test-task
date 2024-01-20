@@ -21,11 +21,14 @@ public class ElementsPanelShowerController : MonoBehaviour
 
 		// After changing by plate element list, we trigger our list on updating actual amount of elements
 		PlateElementEvents.OnChangedListOfPlateElement += ShowNameListAndAmountOfPlatesOnUI;
+		// After loading list from memory, update actual amount of plates
+		PanelElementsEvents.OnLoadedListFromMemory += ShowNameListAndAmountOfPlatesOnUI;
 	}
 
 	private void OnDestroy()
 	{
 		PlateElementEvents.OnChangedListOfPlateElement -= ShowNameListAndAmountOfPlatesOnUI;
+		PanelElementsEvents.OnLoadedListFromMemory -= ShowNameListAndAmountOfPlatesOnUI;
 	}
 
 	private void InitializeNeededComponents()

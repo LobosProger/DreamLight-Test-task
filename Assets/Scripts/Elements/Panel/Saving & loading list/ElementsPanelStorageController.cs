@@ -40,5 +40,14 @@ public class ElementsPanelStorageController : MonoBehaviour
 	{
 		List<PlateElementData> savedList = elementsPanelStorageModel.GetSavedListFromMemory();
 		elementsPanelShowerController.ShowPlateElementsOnUI(savedList);
+		StartCoroutine(WaitRefreshingElementsAndInvokeEvent());
+	}
+
+	// Wait after clearing panel with plate elements, because there is a problem with counting plates
+	// during process clearing of panel
+	private IEnumerator WaitRefreshingElementsAndInvokeEvent()
+	{
+		yield return new WaitForEndOfFrame();
+		PanelElementsEvents.OnLoadedListFromMemory?.Invoke();
 	}
 }
