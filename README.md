@@ -37,8 +37,8 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebc9ca34-11b
 * For example, main prefab of panel was created as a prefab, but panel with toggles was created as prefab variant:
 
 <div align="center">
- <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/a9781515-a0dc-4ae0-ac72-8e5a3804b988" />
- <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebd99e0f-b97c-4926-aa09-4c427e73fc89" />
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/a9781515-a0dc-4ae0-ac72-8e5a3804b988" height=400/>
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ebd99e0f-b97c-4926-aa09-4c427e73fc89" height=400/>
 </div>
 
 # Process developing
