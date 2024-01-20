@@ -529,10 +529,10 @@ RectTransform:
   - {fileID: 1228044419165623639}
   m_Father: {fileID: 8231137443863838125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -123.09, y: -64.482}
-  m_SizeDelta: {x: 246.19, y: 128.96}
+  m_AnchoredPosition: {x: 244.41, y: 449.018}
+  m_SizeDelta: {x: -488.81, y: -898.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8440936382928170777
 CanvasRenderer:
@@ -1187,9 +1187,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4545388353160769398, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -246.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545388353160769398, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -123.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634332114653091259, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634332114653091259, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634332114653091259, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5216017388559086930, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_Name
       value: Shower plates panel with toggles Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389671438054115801, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389671438054115801, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389671438054115801, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_Pivot.x
