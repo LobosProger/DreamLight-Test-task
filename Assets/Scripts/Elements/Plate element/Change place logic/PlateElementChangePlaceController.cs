@@ -119,8 +119,24 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 	}
 
 	// TODO: Create logic of capturing needed data for simplify logic in function ExchangePlatePositions
-	private class PlateElementDataSnapshot
+	private class PlateElementLayoutSnapshot
 	{
+		private int siblingIndexOfPlateSnapshot;
+		private Transform layoutListOfPlateSnapshot;
 
+		private PlateElementLayoutSnapshot(int siblingIndexOfPlateSnapshot, Transform layoutListOfPlateSnapshot)
+		{
+			this.siblingIndexOfPlateSnapshot = siblingIndexOfPlateSnapshot;
+			this.layoutListOfPlateSnapshot = layoutListOfPlateSnapshot;
+		}
+
+		public static PlateElementLayoutSnapshot CaptureLayoutSnapshotOfPlate(Transform plateElement)
+		{
+			int siblingIndexOfPlate = plateElement.GetSiblingIndex();
+			Transform layoutListOfPlate = plateElement.parent;
+
+			PlateElementLayoutSnapshot newSnapshot = new PlateElementLayoutSnapshot(siblingIndexOfPlate, layoutListOfPlate);
+			return newSnapshot;
+		}
 	}
 }
