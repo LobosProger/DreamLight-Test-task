@@ -26,8 +26,6 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 		{
 			anotherPlateController = anotherPlateModel.GetComponent<PlateElementChangePlaceController>();
 			ExchangePositionsOfPlates(anotherPlateModel, anotherPlateController);
-			
-			PlateElementEvents.OnChangedPlaceOfPlateElement?.Invoke();
 		}
 		else
 		{
@@ -40,12 +38,17 @@ public class PlateElementChangePlaceController : MonoBehaviour, IPointerUpHandle
 	{
 		Transform newLayoutListForThisPlate = anotherPlateModel.GetLayoutParentOfPlate();
 		Vector2 newPositionForThisPlate = anotherPlateModel.GetInitialPlatePosition();
-		
+		int newSiblingIndexInLayoutForThisPlate = anotherPlateModel.transform.GetSiblingIndex();
+
 		Transform newLayoutListExchangingPlate = plateElementModel.GetLayoutParentOfPlate();
 		Vector2 newPositionForExchangingPlate = plateElementModel.GetInitialPlatePosition();
+		int newSiblingIndexInLayoutForExchangingPlate = transform.GetSiblingIndex();
 
 		SetNewPlatePositionAndList(newPositionForThisPlate, newLayoutListForThisPlate);
+		transform.SetSiblingIndex(newSiblingIndexInLayoutForThisPlate);
+
 		anotherPlateController.SetNewPlatePositionAndList(newPositionForExchangingPlate, newLayoutListExchangingPlate);
+		anotherPlateController.transform.SetSiblingIndex(newSiblingIndexInLayoutForExchangingPlate);
 	}
 
 	private void ReturnPlateToOldPosition()

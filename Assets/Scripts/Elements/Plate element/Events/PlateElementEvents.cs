@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class PlateElementEvents : MonoBehaviour
 {
-    public static Action OnChangedPlaceOfPlateElement;
+    
 }
