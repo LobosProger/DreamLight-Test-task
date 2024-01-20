@@ -265,6 +265,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 250386698}
     m_Modifications:
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.data[0].nameOfPlate
+      value: Bus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.data[1].nameOfPlate
+      value: Van
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.data[2].nameOfPlate
+      value: Boo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.data[0].numberOfPlate
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220042331938442122, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: platesList.Array.data[1].numberOfPlate
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545388353160769398, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.289917
+      objectReference: {fileID: 0}
     - target: {fileID: 5216017388559086930, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_Name
       value: Shower plates panel
@@ -279,19 +307,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -331,11 +359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1512
+      value: -408
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -532.88257
+      value: 7.1174316
       objectReference: {fileID: 0}
     - target: {fileID: 7189654979462788365, guid: 8c2d09dff23a13347a0e446ee5cb4fc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -657,9 +685,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 250386698}
     m_Modifications:
+    - target: {fileID: 5885187083345190171, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5000305
+      objectReference: {fileID: 0}
     - target: {fileID: 6457901094189661682, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_Name
       value: Shower plates panel with toggles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572972215038116217, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5000305
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_Pivot.x
@@ -675,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_AnchorMin.x
@@ -683,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -727,7 +763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -532.88257
+      value: 7.1174316
       objectReference: {fileID: 0}
     - target: {fileID: 8231137443863838125, guid: 66bef4f31572c7345b4313882a4a17f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
