@@ -28,10 +28,13 @@ https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/9c56ed38-028
 # Assign name logic
 * Easily way to assign name to list via inspector window from Unity and entering in PlayMode:
 
-![image](https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ce51b605-67df-4907-8c74-752137fc19b3)
+<div align="center">
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/ce51b605-67df-4907-8c74-752137fc19b3" />
+</div>
 
 # Process developing
 * During accomplishment, I used Kanban board to set tasks for developing features:
 
-![Screenshot 2024-01-19 111938](https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/60535235-7b93-420f-bea8-c6943156f4c5)
-
+<div align="center">
+ <img src="https://github.com/LobosProger/DreamLight-Test-task/assets/78168123/0a68542b-659f-4725-b869-3c308ad28f78" />
+</div>
